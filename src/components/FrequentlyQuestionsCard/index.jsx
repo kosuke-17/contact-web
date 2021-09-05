@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Card } from 'antd';
 import MacFAQ from './MacFAQ';
+import WindowsFAQ from './WindowsFAQ';
+import IOSFAQ from './IOSFAQ';
+import AndroidFAQ from './AndroidFAQ';
+import IPadFAQ from './IPadFAQ';
 
 const tabList = [
   {
@@ -27,20 +31,17 @@ const tabList = [
 
 const contentList = {
   tab1: <MacFAQ />,
-  tab2: <p>WindowsのFAQ</p>,
-  tab3: <p>iOSのFAQ</p>,
-  tab4: <p>AndroidのFAQ</p>,
-  tab5: <p>iPadのFAQ</p>,
+  tab2: <WindowsFAQ />,
+  tab3: <IOSFAQ />,
+  tab4: <AndroidFAQ />,
+  tab5: <IPadFAQ />,
 };
 
 
 
 
 const FrequentlyQuestionsCard = () => {
-  const initialDevice = {
-    key: 'tab1',
-  };
-  const [device, setDevice] = useState(initialDevice)
+  const [device, setDevice] = useState('tab1')
 
   return (
     <div>
