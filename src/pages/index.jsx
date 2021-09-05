@@ -18,7 +18,7 @@ const Home = () => {
         <Sider>
           <SideNav />
         </Sider>
-        <Content>
+        <Content className="overflow-x-auto">
           <BackBoard>
             <FrequentlyQuestionsCard />
           </BackBoard>
