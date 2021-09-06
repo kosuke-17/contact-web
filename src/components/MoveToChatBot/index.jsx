@@ -2,9 +2,9 @@ import React from 'react'
 
 const MoveToChatBot = () => {
   return (
-    <div>
-      MoveToChatBot
-    </div>
+    <>
+      現在、作成中
+    </>
   )
 }
 

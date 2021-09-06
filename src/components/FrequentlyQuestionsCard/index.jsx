@@ -46,7 +46,7 @@ const FrequentlyQuestionsCard = () => {
   return (
     <div>
       <Card
-        style={{ width: '896px' }}
+        style={{ width: '780px' }}
         title="よくあるご質問"
         tabList={tabList}
         activeTabKey={device}
