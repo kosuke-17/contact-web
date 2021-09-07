@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Form, Input, Button, Card } from 'antd';
 import ContactContent from './ContactContent';
 
@@ -25,9 +25,9 @@ const ContactForm = () => {
   const [inputContent, setInputContent] = useState([])
 
   //onchangeでinput_valueを保存
-  const onChangeName = (e) => {
+  const onChangeName = useCallback((e) => {
     setInputName(e.target.value)
-  };
+  }, [setInputName]);
   const onChangeEmail = (e) => {
     setInputEmail(e.target.value)
   };
@@ -39,18 +39,21 @@ const ContactForm = () => {
 
     setInputContent([
       ...inputContent,
-      inputName,
-      inputEmail,
-      inputIntroduction,
+      {
+        id: 1+inputContent.length,
+        name: inputName,
+        email: inputEmail,
+        introduction: inputIntroduction,
+      },
     ])
     setInputName("")
     setInputEmail("")
     setInputIntroduction("")
   }
 
-  const onFinish = () => {
-    alert("送信しました")
-  }
+  // const onFinish = () => {
+  //   alert("お問い合わせ内容を送信しました")
+  // }
   
   return (
     <>
@@ -58,7 +61,7 @@ const ContactForm = () => {
         style={{ width: '780px' }}
         title="お問い合わせ内容"
       >
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Form {...layout} name="nest-messages" validateMessages={validateMessages}>
           <Form.Item
             name="name"
             label="名前"
@@ -68,7 +71,7 @@ const ContactForm = () => {
               },
             ]}
           >
-            <Input onChange={onChangeName} value={inputName} />
+            <Input onChange={onChangeName} />
           </Form.Item>
           <Form.Item
             name="email"
@@ -79,19 +82,19 @@ const ContactForm = () => {
               },
             ]}
           >
-            <Input onChange={onChangeEmail} value={inputEmail} />
+            <Input onChange={onChangeEmail} />
           </Form.Item>
           <Form.Item name="introduction" label="お問い合わせ内容">
-            <Input.TextArea onChange={onChangeIntroduction} value={inputIntroduction} />
+            <Input.TextArea onChange={onChangeIntroduction} />
           </Form.Item>
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset:22 }}>
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+            <Button type="primary" onClick={handleSubmit}>
               送信
             </Button>
           </Form.Item>
         </Form>
       </Card>
-      <ContactContent inputContent={inputContent}/>
+      <ContactContent inputContents={inputContent}/>
     </>
   )
 }
