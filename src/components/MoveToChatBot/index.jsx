@@ -3,7 +3,7 @@ import React from 'react'
 const MoveToChatBot = () => {
   return (
     <>
-      現在、作成中
+      <a href="https://chatbot1-origin.web.app/">→こちらから</a>
     </>
   )
 }
